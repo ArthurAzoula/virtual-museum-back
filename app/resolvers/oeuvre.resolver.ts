@@ -1,8 +1,8 @@
 import { GraphQLID, GraphQLList } from 'graphql';
-import { UserType } from '../types/user.type';
+import { OeuvreType } from '../types/oeuvre.type';
 
-const user = {
-  type: UserType,
+const oeuvre = {
+  type: OeuvreType,
   args: {
     id: { type: GraphQLID },
   },
@@ -13,8 +13,8 @@ const user = {
   }
 }
 
-const users = {
-  type: new GraphQLList(UserType),
+const oeuvres = {
+  type: new GraphQLList(OeuvreType),
   
   // TODO: implement
   resolve: () => {
@@ -22,4 +22,4 @@ const users = {
   }
 }
 
-export default { user, users };
+export default { oeuvre, oeuvres };
