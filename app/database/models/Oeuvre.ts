@@ -13,7 +13,7 @@ import {
     HasOne
 } from 'sequelize-typescript';
 import Category from './Category';
-import Type_oeuvre from './Type_Oeuvre';
+import Type_oeuvre from './Type_oeuvre';
 import Comment from './Comment';
 import Rating from './Rating';
 import Artist from './Artist';
@@ -103,8 +103,22 @@ class Oeuvre extends Model {
     })
     declare isVerified: boolean;
 
+    @ForeignKey(() => Artist)
+    @Column({
+        type: DataType.UUID,
+        allowNull: false,
+    })
+    declare artistId: string;
+
     @HasOne (() => Artist)
     declare artist: Artist;
+
+    @ForeignKey(() => Type_oeuvre)
+    @Column({
+        type: DataType.UUID,
+        allowNull: false,
+    })
+    declare type_oeuvreId: string;
 
     @HasOne (() => Type_oeuvre)
     declare type_oeuvre: Type_oeuvre;
@@ -114,6 +128,13 @@ class Oeuvre extends Model {
 
     @HasMany(() => Rating)
     declare rating: Rating[];
+
+    @ForeignKey(() => Category)
+    @Column({
+        type: DataType.UUID,
+        allowNull: false,
+    })
+    declare categoryId: string;
 
     @HasMany(() => Category)
     declare category: Category[];

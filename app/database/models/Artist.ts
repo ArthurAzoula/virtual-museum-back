@@ -10,6 +10,7 @@ import {
     DataType,
     CreatedAt,
     UpdatedAt,
+    ForeignKey,
     } from 'sequelize-typescript';
 import Oeuvre from './Oeuvre';
 
@@ -88,6 +89,13 @@ class Artist extends Model {
         allowNull: false,
     })
     declare instagram: string;
+
+    @ForeignKey(() => Oeuvre)
+    @Column({
+        type: DataType.UUID,
+        allowNull: true,
+    })
+    declare oeuvreId: string;
 
     @HasMany(() => Oeuvre)
     declare oeuvre: Oeuvre[];
