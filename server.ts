@@ -1,12 +1,12 @@
 const express = require('express');
 require('dotenv').config();
-const { graphqlHTTP } = require('express-graphql');
-const query = require('./app/schemas/query');
-const { GraphQLSchema } = require('graphql');
+import { graphqlHTTP } from 'express-graphql';
+import { Query } from './app/schemas/query';
+import { GraphQLSchema } from 'graphql';
 
 const app = express();
 app.use('/graphql', graphqlHTTP({
-    schema: new GraphQLSchema({query}),
+    schema: new GraphQLSchema({query: Query}),
     graphiql: true
 }));
 

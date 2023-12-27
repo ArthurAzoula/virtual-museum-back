@@ -6,13 +6,16 @@
     "graphql": "^15.8.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.2"
+    "@types/node": "^20.10.5",
+    "nodemon": "^3.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
   },
   "name": "virtual-museum-back",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.ts"
   },
   "author": "Azoula Arthur",
   "license": "ISC",
