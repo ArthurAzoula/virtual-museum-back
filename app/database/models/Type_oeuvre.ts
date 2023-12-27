@@ -9,6 +9,7 @@ import {
     HasMany,
     DataType,
     CreatedAt,
+    ForeignKey,
     } from "sequelize-typescript";
 import Oeuvre from "./Oeuvre";
 
@@ -36,6 +37,13 @@ class Type_oeuvre extends Model {
         allowNull: false,
     })
     declare description: string;
+
+    @ForeignKey(() => Oeuvre)
+    @Column({
+        type: DataType.UUID,
+        allowNull: false,
+    })
+    declare oeuvreId: string;
 
     @HasMany(() => Oeuvre)
     declare oeuvre: Oeuvre[];

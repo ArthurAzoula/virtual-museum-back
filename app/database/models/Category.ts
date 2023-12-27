@@ -10,6 +10,7 @@ import {
     DataType,
     CreatedAt,
     UpdatedAt,
+    ForeignKey,
     } from "sequelize-typescript";
 import Oeuvre from "./Oeuvre";
 import { Cast } from "sequelize/types/utils";
@@ -55,6 +56,13 @@ class Category extends Model {
 
     })
     declare slug: string;
+
+    @ForeignKey (() => Oeuvre)
+    @Column({
+        type: DataType.UUID,
+        allowNull: false,
+    })
+    declare oeuvreId: string;
 
     @HasMany(() => Oeuvre)
     declare oeuvre: Oeuvre[];
