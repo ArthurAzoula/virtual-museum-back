@@ -1,7 +1,8 @@
-const { GraphQLList } = require('graphql');
+import { GraphQLList } from 'graphql';
+import { UserType } from '../types/user.type';
 
-const userResolver = {
-  type: new GraphQLList(require('../types/user.type')),
+export const UserResolver = {
+  type: new GraphQLList(UserType),
   resolve: () => {
     return [{
       id: 1,
@@ -15,5 +16,3 @@ const userResolver = {
     }];
   }
 };
-
-module.exports = userResolver;
