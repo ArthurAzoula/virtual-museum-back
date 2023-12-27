@@ -3,19 +3,20 @@ require('dotenv').config();
 const { graphqlHTTP } = require('express-graphql');
 const query = require('./app/schemas/query');
 const { GraphQLSchema } = require('graphql');
+const { Sequelize } = require('sequelize');
 
-var pgp = require('pg-promise')();
+// Connect to database postgresql
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
-var db = pgp(process.env.DATABASE_URL);
-
-db.one('SELECT $1 AS value', 123)
-    .then(function (data) {
-        console.log('DATA:', data.value)
-    })
-    .catch(function (error) {
-        console.log('ERROR:', error)
-    });
-
+// test connection
+try {
+    sequelize.authenticate();
+    // Show message if connected and info about database
+    console.log('Connection has been established successfully.');
+    console.log('Database:', sequelize.getDatabaseName());
+} catch (error) {
+    console.error('Unable to connect to the database:', error.message);
+}
 
 const app = express();
 app.use('/graphql', graphqlHTTP({
