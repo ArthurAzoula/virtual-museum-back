@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-import { Sequelize } from 'sequelize-typescript';
+import { Sequelize } from 'sequelize';
 import { graphqlHTTP } from 'express-graphql';
 import { Query } from './app/schemas/query';
 import { GraphQLSchema } from 'graphql';
