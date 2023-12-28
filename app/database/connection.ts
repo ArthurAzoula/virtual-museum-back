@@ -19,6 +19,15 @@ const sequelize = new Sequelize({
 // Add models to sequelize
 sequelize.addModels([Artist, Category, Comment, Oeuvre, Rating, Type_oeuvre, User]);
 
+// Synchronise les models avec la base de données
+sequelize.sync({ alter: true })
+  .then(() => {
+    console.log('Models are synchronized with the database.');
+  })
+  .catch((error) => {
+    console.error('Unable to synchronize the models with the database:', error);
+  });
+
 // Testez la connexion à la base de données
 sequelize
   .authenticate()
