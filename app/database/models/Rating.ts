@@ -21,8 +21,9 @@ class Rating extends Model {
         primaryKey: true,
         type: DataType.UUID,
         defaultValue: DataType.UUIDV4,
-    })
-    declare id: string;
+        autoIncrement: true,
+      })
+    declare id: number;
 
     @Column({
         type: DataType.FLOAT,

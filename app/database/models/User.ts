@@ -22,8 +22,9 @@ class User extends Model {
     primaryKey: true,
     type: DataType.UUID,
     defaultValue: DataType.UUIDV4,
+    autoIncrement: true,
   })
-  declare id: string;
+  declare id: number;
 
   @Column({
     type: DataType.STRING,
