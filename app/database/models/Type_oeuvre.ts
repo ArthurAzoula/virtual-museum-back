@@ -38,15 +38,8 @@ class Type_oeuvre extends Model {
     })
     declare description: string;
 
-    @ForeignKey(() => Oeuvre)
-    @Column({
-        type: DataType.UUID,
-        allowNull: false,
-    })
-    declare oeuvreId: string;
-
     @HasMany(() => Oeuvre)
-    declare oeuvre: Oeuvre[];
+    declare oeuvres: Oeuvre[];
 
     @CreatedAt
     declare createdAt: Date;

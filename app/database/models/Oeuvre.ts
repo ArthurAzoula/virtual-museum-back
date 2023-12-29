@@ -110,7 +110,7 @@ class Oeuvre extends Model {
     })
     declare artistId: string;
 
-    @HasOne (() => Artist)
+    @BelongsTo (() => Artist)
     declare artist: Artist;
 
     @ForeignKey(() => Type_oeuvre)
@@ -120,7 +120,7 @@ class Oeuvre extends Model {
     })
     declare type_oeuvreId: string;
 
-    @HasOne (() => Type_oeuvre)
+    @BelongsTo (() => Type_oeuvre)
     declare type_oeuvre: Type_oeuvre;
 
     @HasMany(() => Comment)
@@ -136,9 +136,8 @@ class Oeuvre extends Model {
     })
     declare categoryId: string;
 
-    @HasMany(() => Category)
+    @BelongsTo(() => Category)
     declare category: Category[];
-
 
     @CreatedAt
     declare createdAt: Date;

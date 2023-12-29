@@ -90,15 +90,8 @@ class Artist extends Model {
     })
     declare instagram: string;
 
-    @ForeignKey(() => Oeuvre)
-    @Column({
-        type: DataType.UUID,
-        allowNull: true,
-    })
-    declare oeuvreId: string;
-
     @HasMany(() => Oeuvre)
-    declare oeuvre: Oeuvre[];
+    declare oeuvres: Oeuvre[];
 
     @CreatedAt
     declare createdAt: Date;
