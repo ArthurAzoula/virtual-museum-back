@@ -57,20 +57,13 @@ class Category extends Model {
     })
     declare slug: string;
 
-    @ForeignKey (() => Oeuvre)
-    @Column({
-        type: DataType.UUID,
-        allowNull: false,
-    })
-    declare oeuvreId: string;
-
     @HasMany(() => Oeuvre)
-    declare oeuvre: Oeuvre[];
+    declare oeuvres: Oeuvre[];
 
     @CreatedAt
     declare createdAt: Date;
 
-    @CreatedAt
+    @UpdatedAt
     declare updatedAt: Date;
 }
 
