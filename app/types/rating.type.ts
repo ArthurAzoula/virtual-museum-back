@@ -2,11 +2,11 @@ import { GraphQLObjectType, GraphQLString, GraphQLFloat, GraphQLID } from 'graph
 import { OeuvreType } from './oeuvre.type';
 import { UserType } from './user.type';
 
-export const NoteType = new GraphQLObjectType({
-  name: 'Note',
+export const RatingType = new GraphQLObjectType({
+  name: 'Rating',
   fields: () => ({
     id: { type: GraphQLID },
-    note: { type: GraphQLFloat },
+    rating: { type: GraphQLFloat },
     oeuvre: { type: OeuvreType },
     user: { type: UserType },
     created_at: { type: GraphQLString },
