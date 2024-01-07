@@ -1,24 +1,26 @@
-import { GraphQLID, GraphQLList } from 'graphql';
+import { GraphQLID, GraphQLInt } from 'graphql';
 import { CategoryType } from '../types/category.type';
+import Category from '../database/models/Category';
+import { createPaginationType } from '../types/pagination.type';
 
 const category = {
   type: CategoryType,
   args: {
     id: { type: GraphQLID },
   },
-  
-  // TODO: implement
   resolve: (_: any, { id }: any) => {
-    return [];
+    return Category.findByPk(id);
   }
 }
 
 const categories = {
-  type: new GraphQLList(CategoryType),
-  
-  // TODO: implement
-  resolve: () => {
-    return [];
+  type: createPaginationType(CategoryType),
+  args: {
+    limit: { type: GraphQLInt },
+    offset: { type: GraphQLInt },
+  },
+  resolve: (_: any, { limit = 50, offset = 0 }: any) => {
+    return Category.findAndCountAll({ limit, offset });
   }
 }
 
