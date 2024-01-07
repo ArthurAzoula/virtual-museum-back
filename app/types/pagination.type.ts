@@ -4,8 +4,8 @@ export const createPaginationType = <T>(T: GraphQLObjectType) => {
   return new GraphQLObjectType({
     name: 'Pagination',
     fields: () => ({
-      totalCount: { type: GraphQLInt },
-      datas: { type: GraphQLList(T) }
+      count: { type: GraphQLInt },
+      rows: { type: GraphQLList(T) }
     })
   });
 }
