@@ -1,9 +1,21 @@
 import { GraphQLObjectType } from 'graphql';
-import { UserResolver } from '../resolvers/user.resolver';
+import ArtistResolver from '../resolvers/artist.resolver';
+import CategoryResolver from '../resolvers/category.resolver';
+import CommentResolver from '../resolvers/comment.resolver';
+import NoteResolver from '../resolvers/rating.resolver';
+import OeuvreResolver from '../resolvers/oeuvre.resolver';
+import TypeOeuvreResolver from '../resolvers/type-oeuvre.resolver';
+import UserResolver from '../resolvers/user.resolver';
 
 export const Query = new GraphQLObjectType({
   name: 'Query',
   fields: {
-    user: UserResolver
+    ...ArtistResolver,
+    ...CategoryResolver,
+    ...CommentResolver,
+    ...NoteResolver,
+    ...OeuvreResolver,
+    ...TypeOeuvreResolver,
+    ...UserResolver,
   }
 });

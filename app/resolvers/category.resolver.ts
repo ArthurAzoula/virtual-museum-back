@@ -1,27 +1,27 @@
 import { GraphQLID, GraphQLInt } from 'graphql';
-import { UserType } from '../types/user.type';
+import { CategoryType } from '../types/category.type';
+import Category from '../database/models/Category';
 import { createPaginationType } from '../types/pagination.type';
-import User from '../database/models/User';
 
-const user = {
-  type: UserType,
+const category = {
+  type: CategoryType,
   args: {
     id: { type: GraphQLID },
   },
   resolve: (_: any, { id }: any) => {
-    return User.findByPk(id);
+    return Category.findByPk(id);
   }
 }
 
-const users = {
-  type: createPaginationType(UserType),
+const categories = {
+  type: createPaginationType(CategoryType),
   args: {
     limit: { type: GraphQLInt },
     offset: { type: GraphQLInt },
   },
   resolve: (_: any, { limit = 50, offset = 0 }: any) => {
-    return User.findAndCountAll({ limit, offset });
+    return Category.findAndCountAll({ limit, offset });
   }
 }
 
-export default { user, users };
+export default { category, categories };
