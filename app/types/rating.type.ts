@@ -6,7 +6,7 @@ export const RatingType = new GraphQLObjectType({
   name: 'Rating',
   fields: () => ({
     id: { type: GraphQLID },
-    rating: { type: GraphQLFloat },
+    note: { type: GraphQLFloat },
     oeuvre: { type: OeuvreType },
     user: { type: UserType },
     created_at: { type: GraphQLString },
